@@ -1,6 +1,27 @@
 import Image from "next/image";
+import LikeButton from './like-button';
 
-export default function Home() {
+function Header({ title }: { title?: string }) {
+  return <h1>{title ? title : 'Default Title'}</h1>;
+}
+
+export default function HomePage() {
+  const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+
+  return (
+    <div>
+      <Header title="Develop. Preview. Ship." />
+      <ul>
+        {names.map((name) => (
+          <li key={name}>{name}</li>
+        ))}
+      </ul>
+      <LikeButton />
+    </div>
+  );
+}
+
+function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
